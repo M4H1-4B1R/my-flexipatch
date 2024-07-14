@@ -172,7 +172,7 @@
 /* The systray patch adds systray for the status bar.
  * https://dwm.suckless.org/patches/systray/
  */
-#define BAR_SYSTRAY_PATCH 0
+#define BAR_SYSTRAY_PATCH 1
 
 /* Show tag symbols in the bar. */
 #define BAR_TAGS_PATCH 1
@@ -488,7 +488,7 @@
 /* This patch adds new clients at the bottom of the stack.
  * https://dwm.suckless.org/patches/attachbottom/
  */
-#define ATTACHBOTTOM_PATCH 0
+#define ATTACHBOTTOM_PATCH 1
 
 /* This patch will make dwm run "~/.local/share/dwm/autostart_blocking.sh" and
  * "~/.local/share/dwm/autostart.sh &" before entering the handler loop. One or
@@ -496,7 +496,7 @@
  * than the original ~/.dwm folder.
  * https://dwm.suckless.org/patches/autostart/
  */
-#define AUTOSTART_PATCH 0
+#define AUTOSTART_PATCH 1
 
 /* By default, windows that are not visible when requesting a resize/move will not
  * get resized/moved. With this patch, they will.
@@ -907,7 +907,7 @@
  * monitor (default).
  * https://dwm.suckless.org/patches/pertag/
  */
-#define PERTAG_PATCH 0
+#define PERTAG_PATCH 1
 
 /* Option to enable gaps on a per tag basis rather than globally.
  * Depends on both pertag and vanitygaps patches being enabled.

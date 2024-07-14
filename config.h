@@ -164,51 +164,51 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #endif // MONOCLE_LAYOUT
 #endif // BAR_TABGROUPS_PATCH
 #if BAR_PANGO_PATCH
-static const char font[]                 = "monospace 10";
+static const char font[]                 = "JetbrainsMono Nerd font 12";
 #else
-static const char *fonts[]               = { "monospace:size=10" };
+static const char *fonts[]               = { "JetbrainsMono Nerd font:size=12" };
 #endif // BAR_PANGO_PATCH
-static const char dmenufont[]            = "monospace:size=10";
+static const char dmenufont[]            = "JetbrainsMono Nerd font:size=12";
 
 static char c000000[]                    = "#000000"; // placeholder value
 
-static char normfgcolor[]                = "#bbbbbb";
-static char normbgcolor[]                = "#222222";
+static char normfgcolor[]                = "#cdd6f4";
+static char normbgcolor[]                = "#181825";
 static char normbordercolor[]            = "#444444";
 static char normfloatcolor[]             = "#db8fd9";
 
 static char selfgcolor[]                 = "#eeeeee";
-static char selbgcolor[]                 = "#005577";
-static char selbordercolor[]             = "#005577";
-static char selfloatcolor[]              = "#005577";
+static char selbgcolor[]                 = "#b4befe";
+static char selbordercolor[]             = "#b4befe";
+static char selfloatcolor[]              = "#b4befe";
 
-static char titlenormfgcolor[]           = "#bbbbbb";
-static char titlenormbgcolor[]           = "#222222";
+static char titlenormfgcolor[]           = "#cdd6f4";
+static char titlenormbgcolor[]           = "#181825";
 static char titlenormbordercolor[]       = "#444444";
 static char titlenormfloatcolor[]        = "#db8fd9";
 
-static char titleselfgcolor[]            = "#eeeeee";
-static char titleselbgcolor[]            = "#005577";
-static char titleselbordercolor[]        = "#005577";
-static char titleselfloatcolor[]         = "#005577";
+static char titleselfgcolor[]            = "#11111b";
+static char titleselbgcolor[]            = "#b4befe";
+static char titleselbordercolor[]        = "#b4befe";
+static char titleselfloatcolor[]         = "#b4befe";
 
-static char tagsnormfgcolor[]            = "#bbbbbb";
-static char tagsnormbgcolor[]            = "#222222";
+static char tagsnormfgcolor[]            = "#cdd6f4";
+static char tagsnormbgcolor[]            = "#181825";
 static char tagsnormbordercolor[]        = "#444444";
 static char tagsnormfloatcolor[]         = "#db8fd9";
 
-static char tagsselfgcolor[]             = "#eeeeee";
-static char tagsselbgcolor[]             = "#005577";
-static char tagsselbordercolor[]         = "#005577";
-static char tagsselfloatcolor[]          = "#005577";
+static char tagsselfgcolor[]             = "#11111b";
+static char tagsselbgcolor[]             = "#b4befe";
+static char tagsselbordercolor[]         = "#b4befe";
+static char tagsselfloatcolor[]          = "#b4befe";
 
-static char hidnormfgcolor[]             = "#005577";
+static char hidnormfgcolor[]             = "#b4befe";
 static char hidselfgcolor[]              = "#227799";
-static char hidnormbgcolor[]             = "#222222";
-static char hidselbgcolor[]              = "#222222";
+static char hidnormbgcolor[]             = "#181825";
+static char hidselbgcolor[]              = "#181825";
 
-static char urgfgcolor[]                 = "#bbbbbb";
-static char urgbgcolor[]                 = "#222222";
+static char urgfgcolor[]                 = "#313244";
+static char urgbgcolor[]                 = "#181825";
 static char urgbordercolor[]             = "#ff0000";
 static char urgfloatcolor[]              = "#db8fd9";
 
@@ -637,7 +637,7 @@ static const BarRule barrules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 #if FLEXTILE_DELUXE_LAYOUT
 static const int nstack      = 0;    /* number of clients in primary stack area */
@@ -783,7 +783,7 @@ static const char *xkb_layouts[]  = {
 #endif // XKB_PATCH
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #if COMBO_PATCH && SWAPTAGS_PATCH && TAGOTHERMONITOR_PATCH
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      comboview,      {.ui = 1 << TAG} }, \
@@ -880,7 +880,7 @@ static const char *dmenucmd[] = {
 	#endif // BAR_DMENUMATCHTOP_PATCH
 	NULL
 };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 
 #if BAR_STATUSCMD_PATCH
 #if BAR_DWMBLOCKS_PATCH
@@ -911,14 +911,18 @@ static const Key keys[] = {
 	#if KEYMODES_PATCH
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
 	#endif // KEYMODES_PATCH
-	{ MODKEY,                       XK_p,          spawn,                  {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = termcmd } },
+	{ MODKEY,                       XK_Return,          spawn,                  {.v = termcmd } },
+	{ MODKEY,                       XK_b,          spawn,                  SHCMD("firefox") },
+	{ MODKEY,                       XK_e,          spawn,                  SHCMD("thunar") },
+	{ MODKEY,                       XK_r,          spawn,                  SHCMD("redshift -O 5000") },
+	{ MODKEY,                       XK_s,          spawn,                  SHCMD("flameshot gui") },
+	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  SHCMD("rofi -show drun") },
 	#if RIODRAW_PATCH
 	{ MODKEY|ControlMask,           XK_p,          riospawnsync,           {.v = dmenucmd } },
 	{ MODKEY|ControlMask,           XK_Return,     riospawn,               {.v = termcmd } },
 	{ MODKEY,                       XK_s,          rioresize,              {0} },
 	#endif // RIODRAW_PATCH
-	{ MODKEY,                       XK_b,          togglebar,              {0} },
+	/*{ MODKEY,                       XK_b,          togglebar,              {0} },*/
 	#if TOGGLETOPBAR_PATCH
 	{ MODKEY|ShiftMask,             XK_b,          toggletopbar,           {0} },
 	#endif // TOGGLETOPBAR_PATCH
@@ -1013,7 +1017,7 @@ static const Key keys[] = {
 	#if INSETS_PATCH
 	{ MODKEY|ShiftMask|ControlMask, XK_a,          updateinset,            {.v = &default_inset } },
 	#endif // INSETS_PATCH
-	{ MODKEY,                       XK_Return,     zoom,                   {0} },
+	/*{ MODKEY,                       XK_Return,     zoom,                   {0} },*/
 	#if VANITYGAPS_PATCH
 	{ MODKEY|Mod4Mask,              XK_u,          incrgaps,               {.i = +1 } },
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_u,          incrgaps,               {.i = -1 } },
@@ -1064,7 +1068,7 @@ static const Key keys[] = {
 	#if BAR_WINTITLEACTIONS_PATCH
 	{ MODKEY|ControlMask,           XK_z,          showhideclient,         {0} },
 	#endif // BAR_WINTITLEACTIONS_PATCH
-	{ MODKEY|ShiftMask,             XK_c,          killclient,             {0} },
+	{ MODKEY,             XK_q,          killclient,             {0} },
 	#if KILLUNSEL_PATCH
 	{ MODKEY|ShiftMask,             XK_x,          killunsel,              {0} },
 	#endif // KILLUNSEL_PATCH
