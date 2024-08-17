@@ -29,9 +29,9 @@ static int nomodbuttons                  = 1;   /* allow client mouse button bin
 #endif // NO_MOD_BUTTONS_PATCH
 #if VANITYGAPS_PATCH
 static const unsigned int gappih         = 20;  /* horiz inner gap between windows */
-static const unsigned int gappiv         = 10;  /* vert inner gap between windows */
-static const unsigned int gappoh         = 10;  /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov         = 30;  /* vert outer gap between windows and screen edge */
+static const unsigned int gappiv         = 20;  /* vert inner gap between windows */
+static const unsigned int gappoh         = 20;  /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov         = 20;  /* vert outer gap between windows and screen edge */
 static const int smartgaps_fact          = 1;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
 #endif // VANITYGAPS_PATCH
 #if AUTOSTART_PATCH
@@ -173,42 +173,42 @@ static const char dmenufont[]            = "JetbrainsMono Nerd font:size=12";
 static char c000000[]                    = "#000000"; // placeholder value
 
 static char normfgcolor[]                = "#cdd6f4";
-static char normbgcolor[]                = "#181825";
+static char normbgcolor[]                = "#19191a";
 static char normbordercolor[]            = "#444444";
 static char normfloatcolor[]             = "#db8fd9";
 
 static char selfgcolor[]                 = "#eeeeee";
-static char selbgcolor[]                 = "#b4befe";
-static char selbordercolor[]             = "#b4befe";
-static char selfloatcolor[]              = "#b4befe";
+static char selbgcolor[]                 = "#a9b1d6";
+static char selbordercolor[]             = "#a9b1d6";
+static char selfloatcolor[]              = "#a9b1d6";
 
 static char titlenormfgcolor[]           = "#cdd6f4";
-static char titlenormbgcolor[]           = "#181825";
+static char titlenormbgcolor[]           = "#19191a";
 static char titlenormbordercolor[]       = "#444444";
 static char titlenormfloatcolor[]        = "#db8fd9";
 
 static char titleselfgcolor[]            = "#11111b";
-static char titleselbgcolor[]            = "#b4befe";
-static char titleselbordercolor[]        = "#b4befe";
-static char titleselfloatcolor[]         = "#b4befe";
+static char titleselbgcolor[]            = "#a9b1d6";
+static char titleselbordercolor[]        = "#a9b1d6";
+static char titleselfloatcolor[]         = "#a9b1d6";
 
 static char tagsnormfgcolor[]            = "#cdd6f4";
-static char tagsnormbgcolor[]            = "#181825";
+static char tagsnormbgcolor[]            = "#19191a";
 static char tagsnormbordercolor[]        = "#444444";
 static char tagsnormfloatcolor[]         = "#db8fd9";
 
 static char tagsselfgcolor[]             = "#11111b";
-static char tagsselbgcolor[]             = "#b4befe";
-static char tagsselbordercolor[]         = "#b4befe";
-static char tagsselfloatcolor[]          = "#b4befe";
+static char tagsselbgcolor[]             = "#a9b1d6";
+static char tagsselbordercolor[]         = "#a9b1d6";
+static char tagsselfloatcolor[]          = "#a9b1d6";
 
-static char hidnormfgcolor[]             = "#b4befe";
+static char hidnormfgcolor[]             = "#a9b1d6";
 static char hidselfgcolor[]              = "#227799";
-static char hidnormbgcolor[]             = "#181825";
-static char hidselbgcolor[]              = "#181825";
+static char hidnormbgcolor[]             = "#19191a";
+static char hidselbgcolor[]              = "#19191a";
 
 static char urgfgcolor[]                 = "#313244";
-static char urgbgcolor[]                 = "#181825";
+static char urgbgcolor[]                 = "#19191a";
 static char urgbordercolor[]             = "#ff0000";
 static char urgfloatcolor[]              = "#db8fd9";
 
@@ -916,6 +916,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_e,          spawn,                  SHCMD("thunar") },
 	{ MODKEY,                       XK_r,          spawn,                  SHCMD("redshift -O 5000") },
 	{ MODKEY,                       XK_s,          spawn,                  SHCMD("flameshot gui") },
+	{ MODKEY,                       XK_x,          spawn,                  SHCMD("/home/abir/.local/scripts/power") },
 	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  SHCMD("rofi -show drun") },
 	#if RIODRAW_PATCH
 	{ MODKEY|ControlMask,           XK_p,          riospawnsync,           {.v = dmenucmd } },
