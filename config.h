@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include <X11/XF86keysym.h>
 
 /* Helper macros for spawning commands */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -9,7 +10,7 @@
 static const unsigned int borderpx       = 0;   /* border pixel of windows */
 static const int corner_radius           = 10;
 #else
-static const unsigned int borderpx       = 1;   /* border pixel of windows */
+static const unsigned int borderpx       = 0;   /* border pixel of windows */
 #endif // ROUNDED_CORNERS_PATCH
 #if BAR_BORDER_PATCH
 /* This allows the bar border size to be explicitly set separately from borderpx.
@@ -173,7 +174,7 @@ static const char dmenufont[]            = "JetbrainsMono Nerd font:size=12";
 static char c000000[]                    = "#000000"; // placeholder value
 
 static char normfgcolor[]                = "#cdd6f4";
-static char normbgcolor[]                = "#19191a";
+static char normbgcolor[]                = "#040507";
 static char normbordercolor[]            = "#444444";
 static char normfloatcolor[]             = "#db8fd9";
 
@@ -183,7 +184,7 @@ static char selbordercolor[]             = "#a9b1d6";
 static char selfloatcolor[]              = "#a9b1d6";
 
 static char titlenormfgcolor[]           = "#cdd6f4";
-static char titlenormbgcolor[]           = "#19191a";
+static char titlenormbgcolor[]           = "#040507";
 static char titlenormbordercolor[]       = "#444444";
 static char titlenormfloatcolor[]        = "#db8fd9";
 
@@ -193,7 +194,7 @@ static char titleselbordercolor[]        = "#a9b1d6";
 static char titleselfloatcolor[]         = "#a9b1d6";
 
 static char tagsnormfgcolor[]            = "#cdd6f4";
-static char tagsnormbgcolor[]            = "#19191a";
+static char tagsnormbgcolor[]            = "#040507";
 static char tagsnormbordercolor[]        = "#444444";
 static char tagsnormfloatcolor[]         = "#db8fd9";
 
@@ -204,11 +205,11 @@ static char tagsselfloatcolor[]          = "#a9b1d6";
 
 static char hidnormfgcolor[]             = "#a9b1d6";
 static char hidselfgcolor[]              = "#227799";
-static char hidnormbgcolor[]             = "#19191a";
-static char hidselbgcolor[]              = "#19191a";
+static char hidnormbgcolor[]             = "#040507";
+static char hidselbgcolor[]              = "#040507";
 
 static char urgfgcolor[]                 = "#313244";
-static char urgbgcolor[]                 = "#19191a";
+static char urgbgcolor[]                 = "#040507";
 static char urgbordercolor[]             = "#ff0000";
 static char urgfloatcolor[]              = "#db8fd9";
 
@@ -911,13 +912,21 @@ static const Key keys[] = {
 	#if KEYMODES_PATCH
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
 	#endif // KEYMODES_PATCH
-	{ MODKEY,                       XK_Return,          spawn,                  {.v = termcmd } },
-	{ MODKEY,                       XK_b,          spawn,                  SHCMD("firefox") },
+	{ MODKEY,                       XK_Return,     spawn,                  {.v = termcmd } },
+	{ MODKEY,                       XK_b,          spawn,                  SHCMD("zen-browser") },
 	{ MODKEY,                       XK_e,          spawn,                  SHCMD("thunar") },
 	{ MODKEY,                       XK_r,          spawn,                  SHCMD("redshift -O 5000") },
 	{ MODKEY,                       XK_s,          spawn,                  SHCMD("flameshot gui") },
 	{ MODKEY,                       XK_x,          spawn,                  SHCMD("/home/abir/.local/scripts/power") },
 	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  SHCMD("rofi -show drun") },
+	{ 0,                            XF86XK_AudioRaiseVolume,      spawn,   SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
+	{ 0,                            XF86XK_AudioLowerVolume ,     spawn,   SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
+	{ 0,                            XF86XK_AudioMute,             spawn,   SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
+	{0,        XF86XK_AudioPlay,                   spawn,                  SHCMD("playerctl play-pause")},
+	{0,        XF86XK_AudioPrev,                   spawn,                  SHCMD("playerctl previous")},
+	{0,        XF86XK_AudioNext,                   spawn,                  SHCMD("playerctl next")},
+	{0,        XF86XK_MonBrightnessDown,           spawn,                  SHCMD("brightnessctl set 5%-")},
+	{0,        XF86XK_MonBrightnessUp,             spawn,                  SHCMD("brightnessctl set +5%")},
 	#if RIODRAW_PATCH
 	{ MODKEY|ControlMask,           XK_p,          riospawnsync,           {.v = dmenucmd } },
 	{ MODKEY|ControlMask,           XK_Return,     riospawn,               {.v = termcmd } },
