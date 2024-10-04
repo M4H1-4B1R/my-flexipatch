@@ -919,6 +919,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_s,          spawn,                  SHCMD("flameshot gui") },
 	{ MODKEY,                       XK_x,          spawn,                  SHCMD("/home/abir/.local/scripts/power") },
 	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  SHCMD("rofi -show drun") },
+	{ MODKEY|ShiftMask,             XK_l,          spawn,                  SHCMD("betterlockscreen -l") },
 	{ 0,                            XF86XK_AudioRaiseVolume,      spawn,   SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
 	{ 0,                            XF86XK_AudioLowerVolume ,     spawn,   SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
 	{ 0,                            XF86XK_AudioMute,             spawn,   SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
